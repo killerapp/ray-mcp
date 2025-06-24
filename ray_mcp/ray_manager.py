@@ -166,7 +166,12 @@ class RayManager:
             ray_context = ray.init(**init_kwargs)
 
             self._is_initialized = True
-            self._cluster_address = ray_context.address_info["address"]
+            # For Ray Client connections, address_info might not be available
+            try:
+                self._cluster_address = ray_context.address_info["address"]
+            except (AttributeError, KeyError):
+                # Fallback: construct address from dashboard info
+                self._cluster_address = f"ray://{head_node_host}:{head_node_port}"
 
             # Initialize job client with retry logic - this must complete before returning success
             job_client_status = "ready"
@@ -252,7 +257,12 @@ class RayManager:
             ray_context = ray.init(**init_kwargs)
 
             self._is_initialized = True
-            self._cluster_address = ray_context.address_info["address"]
+            # For Ray Client connections, address_info might not be available
+            try:
+                self._cluster_address = ray_context.address_info["address"]
+            except (AttributeError, KeyError):
+                # Fallback for Ray Client connections
+                self._cluster_address = address
 
             # Initialize job client with retry logic - this must complete before returning success
             job_client_status = "ready"

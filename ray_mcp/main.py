@@ -4,6 +4,7 @@
 import asyncio
 import json
 import logging
+import os
 import sys
 from typing import Any, Dict, List, Optional, Union
 
@@ -389,9 +390,18 @@ async def main():
         sys.exit(1)
 
     try:
-        # Start the MCP server without initializing Ray
-        # Ray will be initialized only when start_ray or connect_ray tools are called
-        print("Ray MCP Server starting (Ray not initialized yet)", file=sys.stderr)
+        # Check if RAY_ADDRESS environment variable is set for auto-connection
+        ray_address = os.environ.get("RAY_ADDRESS")
+        if ray_address:
+            print(f"Ray MCP Server starting with auto-connect to {ray_address}", file=sys.stderr)
+            try:
+                # Auto-connect to Ray cluster
+                await ray_manager.connect_cluster(address=ray_address)
+                print(f"✅ Auto-connected to Ray cluster at {ray_address}", file=sys.stderr)
+            except Exception as e:
+                print(f"⚠️  Auto-connect failed: {e}. Use connect_ray tool manually.", file=sys.stderr)
+        else:
+            print("Ray MCP Server starting (Ray not initialized yet)", file=sys.stderr)
 
         async with stdio_server() as (read_stream, write_stream):
             await server.run(

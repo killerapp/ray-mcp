@@ -11,23 +11,27 @@ Clean configuration file for Claude Desktop. Copy this content to your Claude De
 
 **Location**: 
 - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Linux: `~/.config/claude-desktop/claude_desktop_config.json`
 - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
 ```json
 {
   "mcpServers": {
     "ray-mcp": {
-      "command": "/path/to/your/venv/bin/ray-mcp",
+      "command": "/opt/homebrew/bin/uv",
+      "args": ["run", "--directory", "/absolute/path/to/ray-mcp", "ray-mcp"],
       "env": {
-        "RAY_ADDRESS": "",
-        "RAY_DASHBOARD_HOST": "0.0.0.0"
+        "RAY_ADDRESS": "ray://127.0.0.1:10001"
       }
     }
   }
 }
 ```
 
-**Note**: Replace `/path/to/your/venv/bin/ray-mcp` with the actual path to your console script. You can find it with `which ray-mcp`.
+**Note**: 
+- Replace `/absolute/path/to/ray-mcp` with the actual path to your cloned repository
+- Use `which uv` to find the correct UV path for your system
+- For Kubernetes clusters, use port-forwarding: `kubectl port-forward -n ray-cluster ray-cluster-kuberay-head-<pod-id> 10001:10001`
 
 ### `mcp_server_config.json`
 Comprehensive configuration with examples and documentation for different Ray cluster connection scenarios.

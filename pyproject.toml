@@ -11,10 +11,10 @@ authors = [
 ]
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
     "mcp>=1.0.0",
-    "ray[default]>=2.47.0",
+    "ray[default]==2.47.0",
     "typing-extensions>=4.5.0",
     "pydantic>=2.0.0",
     "requests>=2.28.0",

@@ -1,11 +1,10 @@
 {
   "mcpServers": {
     "ray-mcp": {
-      "command": "/path/to/your/venv/bin/ray-mcp",
-      "args": [],
+      "command": "/opt/homebrew/bin/uv",
+      "args": ["run", "--directory", "/absolute/path/to/ray-mcp", "ray-mcp"],
       "env": {
-        "RAY_ADDRESS": "",
-        "RAY_DASHBOARD_HOST": "0.0.0.0"
+        "RAY_ADDRESS": "ray://127.0.0.1:10001"
       }
     }
   }

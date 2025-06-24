@@ -159,9 +159,55 @@ See the `examples/` directory for working examples:
 - `distributed_training.py` - Distributed machine learning
 - `workflow_orchestration.py` - Complex workflow orchestration
 
-## Configuration
+## Claude Desktop Integration
 
-See `docs/config/` for configuration examples and setup instructions.
+### Quick Setup
+
+1. **Clone and install:**
+   ```bash
+   git clone <repository-url>
+   cd ray-mcp
+   uv sync
+   ```
+
+2. **Add to Claude Desktop config** (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
+   ```json
+   {
+     "mcpServers": {
+       "ray-mcp": {
+         "command": "/opt/homebrew/bin/uv",
+         "args": ["run", "--directory", "/absolute/path/to/ray-mcp", "ray-mcp"]
+       }
+     }
+   }
+   ```
+
+3. **For remote Ray clusters** (like Kubernetes), add port-forwarding and environment:
+   ```bash
+   kubectl port-forward -n ray-cluster ray-cluster-kuberay-head-<pod-id> 10001:10001
+   ```
+   
+   ```json
+   {
+     "mcpServers": {
+       "ray-mcp": {
+         "command": "/opt/homebrew/bin/uv",
+         "args": ["run", "--directory", "/absolute/path/to/ray-mcp", "ray-mcp"],
+         "env": {
+           "RAY_ADDRESS": "ray://127.0.0.1:10001"
+         }
+       }
+     }
+   }
+   ```
+
+4. **Restart Claude Desktop** and test with: "What Ray tools are available?"
+
+### Detailed Setup Guides
+
+- **Kubernetes Ray Clusters**: See [docs/KUBERNETES_SETUP.md](docs/KUBERNETES_SETUP.md)
+- **Configuration Examples**: See [docs/config/](docs/config/)
+- **Development Guide**: See [CLAUDE.md](CLAUDE.md)
 
 ## Development
 
