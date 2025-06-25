@@ -20,7 +20,7 @@ A powerful Model Context Protocol (MCP) server that brings Ray's distributed com
 **🚀 Super Easy with uvx (Recommended):**
 ```bash
 # Install and run directly with uvx - no setup needed! ⚡
-uvx claude-ray-mcp
+uvx ray-mcp-server
 ```
 
 **📥 Or clone for development:**
@@ -189,7 +189,7 @@ Ready-to-run examples in the `examples/` directory:
      "mcpServers": {
        "ray-mcp": {
          "command": "uvx",
-         "args": ["claude-ray-mcp"]
+         "args": ["ray-mcp-server"]
        }
      }
    }
@@ -201,7 +201,7 @@ Ready-to-run examples in the `examples/` directory:
      "mcpServers": {
        "ray-mcp": {
          "command": "/opt/homebrew/bin/uv",
-         "args": ["run", "--directory", "/absolute/path/to/ray-mcp", "claude-ray-mcp"]
+         "args": ["run", "--directory", "/absolute/path/to/ray-mcp", "ray-mcp-server"]
        }
      }
    }
@@ -218,7 +218,7 @@ Ready-to-run examples in the `examples/` directory:
      "mcpServers": {
        "ray-mcp": {
          "command": "uvx",
-         "args": ["claude-ray-mcp"],
+         "args": ["ray-mcp-server"],
          "env": {
            "RAY_ADDRESS": "ray://127.0.0.1:10001"
          }
@@ -268,7 +268,9 @@ uv run isort ray_mcp/
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the Apache License, Version 2.0 - see the [LICENSE](LICENSE) file for details.
+
+This software includes code originally from [ray-mcp](https://github.com/pradeepiyer/ray-mcp) licensed under the MIT License. See [NOTICE](NOTICE) file for full attribution details.
 
 ---
 
