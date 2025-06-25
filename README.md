@@ -17,6 +17,13 @@ A powerful Model Context Protocol (MCP) server that brings Ray's distributed com
 
 ### 📦 Installation
 
+**🚀 Super Easy with uvx (Recommended):**
+```bash
+# Install and run directly with uvx - no setup needed! ⚡
+uvx claude-ray-mcp
+```
+
+**📥 Or clone for development:**
 ```bash
 # Clone the repository
 git clone <repository-url>
@@ -160,7 +167,14 @@ Ready-to-run examples in the `examples/` directory:
 
 ### ⚡ Quick Setup
 
-1. **📥 Clone and install:**
+1. **🎯 Choose your installation method:**
+
+   **Option A: uvx (Easiest! 🚀)**
+   ```bash
+   # No installation needed! uvx handles everything
+   ```
+
+   **Option B: Development setup**
    ```bash
    git clone <repository-url>
    cd ray-mcp
@@ -168,12 +182,26 @@ Ready-to-run examples in the `examples/` directory:
    ```
 
 2. **⚙️ Add to Claude Desktop config** (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
+
+   **For uvx installation:**
+   ```json
+   {
+     "mcpServers": {
+       "ray-mcp": {
+         "command": "uvx",
+         "args": ["claude-ray-mcp"]
+       }
+     }
+   }
+   ```
+
+   **For development setup:**
    ```json
    {
      "mcpServers": {
        "ray-mcp": {
          "command": "/opt/homebrew/bin/uv",
-         "args": ["run", "--directory", "/absolute/path/to/ray-mcp", "ray-mcp"]
+         "args": ["run", "--directory", "/absolute/path/to/ray-mcp", "claude-ray-mcp"]
        }
      }
    }
@@ -184,12 +212,13 @@ Ready-to-run examples in the `examples/` directory:
    kubectl port-forward -n ray-cluster ray-cluster-kuberay-head-<pod-id> 10001:10001
    ```
    
+   **For uvx:**
    ```json
    {
      "mcpServers": {
        "ray-mcp": {
-         "command": "/opt/homebrew/bin/uv",
-         "args": ["run", "--directory", "/absolute/path/to/ray-mcp", "ray-mcp"],
+         "command": "uvx",
+         "args": ["claude-ray-mcp"],
          "env": {
            "RAY_ADDRESS": "ray://127.0.0.1:10001"
          }

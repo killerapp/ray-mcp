@@ -2,16 +2,30 @@
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build.targets.wheel]
+packages = ["ray_mcp"]
+
 [project]
-name = "ray-mcp"
+name = "claude-ray-mcp"
 version = "0.2.0"
-description = "MCP (Model Context Protocol) server for Ray distributed computing"
+description = "⚡ Claude Desktop MCP server for Ray distributed computing - manage clusters through natural language!"
 authors = [
-    {name = "claude 4 sonnet", email = "ray-mcp@example.com"}
+    {name = "Vaskin", email = "vaskin@kflow.ai"}
 ]
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.12"
+keywords = ["ray", "mcp", "distributed-computing", "claude-desktop", "ai", "machine-learning"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: System :: Distributed Computing",
+]
 dependencies = [
     "mcp>=1.0.0",
     "ray[default]==2.47.0",
@@ -36,7 +50,7 @@ Repository = "https://github.com/pradeepiyer/ray-mcp.git"
 Issues = "https://github.com/pradeepiyer/ray-mcp/issues"
 
 [project.scripts]
-ray-mcp = "ray_mcp.main:run_server"
+claude-ray-mcp = "ray_mcp.main:run_server"
 
 # UV Configuration
 [tool.uv]
