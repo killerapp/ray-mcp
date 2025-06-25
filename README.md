@@ -1,40 +1,38 @@
-# Ray MCP Server
+# ⚡ Ray MCP Server
 
-A Model Context Protocol (MCP) server for managing Ray clusters, jobs, and distributed computing workflows.
+🚀 **Supercharge your AI workflows with distributed computing!** 
 
-## Features
+A powerful Model Context Protocol (MCP) server that brings Ray's distributed computing capabilities directly to Claude Desktop. Manage clusters, submit jobs, and orchestrate complex workflows through natural language commands! 🎯
 
-- **Multi-Node Cluster Management**: Start and manage Ray clusters with head nodes and worker nodes
-- **Job Management**: Submit, monitor, and manage Ray jobs
-- **Actor Management**: Create and manage Ray actors
-- **Real-time Monitoring**: Get cluster status, resource usage, and performance metrics
-- **Logging and Debugging**: Access logs and debug job issues
-- **Scheduling**: Schedule jobs with cron-like syntax
+## ✨ Features
 
-## Quick Start
+- 🏗️ **Multi-Node Cluster Management**: Start and manage Ray clusters with head nodes and worker nodes
+- 🚀 **Job Management**: Submit, monitor, and manage Ray jobs with ease
+- 🎭 **Actor Management**: Create and manage Ray actors for stateful computations
+- 📊 **Real-time Monitoring**: Get cluster status, resource usage, and performance metrics
+- 🔍 **Logging and Debugging**: Access logs and debug job issues seamlessly
+- ⏰ **Scheduling**: Schedule jobs with cron-like syntax for automated workflows
 
-### Installation
+## 🚀 Quick Start
+
+### 📦 Installation
 
 ```bash
 # Clone the repository
 git clone <repository-url>
 cd ray-mcp
 
-# Install dependencies
+# Install dependencies with UV (lightning fast! ⚡)
 uv sync
 
-# Install the package
-uv pip install -e .
-
-# activate venv
-source .venv/bin/activate
+# You're ready to go! 🎉
 ```
 
-### Starting Ray Clusters
+### 🎯 Starting Ray Clusters
 
 The server supports both single-node and multi-node cluster configurations:
 
-#### Simple Single-Node Cluster
+#### 🖥️ Simple Single-Node Cluster
 
 ```json
 {
@@ -46,9 +44,9 @@ The server supports both single-node and multi-node cluster configurations:
 }
 ```
 
-#### Multi-Node Cluster (Default)
+#### 🌐 Multi-Node Cluster (Default)
 
-The server now defaults to starting multi-node clusters with 2 worker nodes:
+The server now defaults to starting multi-node clusters with 2 worker nodes (perfect for scaling! 📈):
 
 ```json
 {
@@ -60,11 +58,11 @@ The server now defaults to starting multi-node clusters with 2 worker nodes:
 ```
 
 This creates:
-- Head node: 1 CPU, 0 GPUs, 1GB object store memory
-- Worker node 1: 2 CPUs, 0 GPUs, 500MB object store memory  
-- Worker node 2: 2 CPUs, 0 GPUs, 500MB object store memory
+- 🧠 **Head node**: 1 CPU, 0 GPUs, 1GB object store memory
+- ⚙️ **Worker node 1**: 2 CPUs, 0 GPUs, 500MB object store memory  
+- ⚙️ **Worker node 2**: 2 CPUs, 0 GPUs, 500MB object store memory
 
-#### Custom Multi-Node Setup
+#### 🛠️ Custom Multi-Node Setup
 
 For advanced configurations, you can specify custom worker nodes:
 
@@ -97,80 +95,79 @@ For advanced configurations, you can specify custom worker nodes:
 }
 ```
 
-### Basic Usage
+### 💫 Basic Usage
 
-```python
-# Check cluster status
+Just ask Claude Desktop naturally! 🗣️
+
+- *"What's my Ray cluster status?"* 
+- *"Submit a job to process my data"*
+- *"Show me cluster resources"*
+- *"List all running jobs"*
+
+Or use direct tool calls:
+```json
 {
   "tool": "cluster_status"
 }
-
-# Submit a job
-{
-  "tool": "submit_job",
-  "arguments": {
-    "entrypoint": "python examples/simple_job.py"
-  }
-}
 ```
 
-## Available Tools
+## 🛠️ Available Tools
 
-The server provides a comprehensive set of tools for Ray management, covering cluster operations, job management, actor management, monitoring, and scheduling:
+20+ powerful tools for comprehensive Ray management! 💪
 
-### Cluster Operations
-- `start_ray` - Start a new Ray cluster with head node and optional worker nodes
-- `connect_ray` - Connect to an existing Ray cluster
-- `stop_ray` - Stop the current Ray cluster
-- `cluster_status` - Get comprehensive cluster status
-- `cluster_resources` - Get resource usage information
-- `cluster_nodes` - List all cluster nodes
-- `worker_status` - Get detailed status of worker nodes
+### 🏗️ Cluster Operations
+- 🚀 `start_ray` - Start a new Ray cluster with head node and optional worker nodes
+- 🔗 `connect_ray` - Connect to an existing Ray cluster
+- 🛑 `stop_ray` - Stop the current Ray cluster
+- 📊 `cluster_status` - Get comprehensive cluster status
+- 💾 `cluster_resources` - Get resource usage information
+- 🖥️ `cluster_nodes` - List all cluster nodes
+- ⚙️ `worker_status` - Get detailed status of worker nodes
 
-### Job Operations
-- `submit_job` - Submit a new job to the cluster
-- `list_jobs` - List all jobs (running, completed, failed)
-- `job_status` - Get detailed status of a specific job
-- `cancel_job` - Cancel a running or queued job
-- `monitor_job` - Monitor job progress
-- `debug_job` - Debug a job with detailed information
-- `get_logs` - Retrieve job logs and outputs
+### 🚀 Job Operations
+- 📤 `submit_job` - Submit a new job to the cluster
+- 📋 `list_jobs` - List all jobs (running, completed, failed)
+- 🔍 `job_status` - Get detailed status of a specific job
+- ❌ `cancel_job` - Cancel a running or queued job
+- 👀 `monitor_job` - Monitor job progress in real-time
+- 🐛 `debug_job` - Debug a job with detailed information
+- 📜 `get_logs` - Retrieve job logs and outputs
 
-### Actor Operations
-- `list_actors` - List all actors in the cluster
-- `kill_actor` - Terminate a specific actor
+### 🎭 Actor Operations
+- 👥 `list_actors` - List all actors in the cluster
+- 💀 `kill_actor` - Terminate a specific actor
 
-### Enhanced Monitoring
-- `performance_metrics` - Get detailed cluster performance metrics
-- `health_check` - Perform comprehensive cluster health check
-- `optimize_config` - Get cluster optimization recommendations
+### 📈 Enhanced Monitoring
+- ⚡ `performance_metrics` - Get detailed cluster performance metrics
+- 🏥 `health_check` - Perform comprehensive cluster health check
+- 🎯 `optimize_config` - Get cluster optimization recommendations
 
-### Job Scheduling
-- `schedule_job` - Configure job scheduling parameters
+### ⏰ Job Scheduling
+- 📅 `schedule_job` - Configure job scheduling parameters
 
-## Examples
+## 📚 Examples
 
-See the `examples/` directory for working examples:
+Ready-to-run examples in the `examples/` directory:
 
-- `simple_job.py` - Basic Ray job example
-- `multi_node_cluster.py` - Multi-node cluster demonstration with worker node management
-- `actor_example.py` - Actor-based computation
-- `data_pipeline.py` - Data processing pipeline
-- `distributed_training.py` - Distributed machine learning
-- `workflow_orchestration.py` - Complex workflow orchestration
+- 🎯 `simple_job.py` - Basic Ray job example (start here!)
+- 🌐 `multi_node_cluster.py` - Multi-node cluster with worker management
+- 🎭 `actor_example.py` - Actor-based stateful computation
+- 🔄 `data_pipeline.py` - Scalable data processing pipeline
+- 🤖 `distributed_training.py` - Distributed machine learning
+- 🎼 `workflow_orchestration.py` - Complex workflow orchestration
 
-## Claude Desktop Integration
+## 🔌 Claude Desktop Integration
 
-### Quick Setup
+### ⚡ Quick Setup
 
-1. **Clone and install:**
+1. **📥 Clone and install:**
    ```bash
    git clone <repository-url>
    cd ray-mcp
    uv sync
    ```
 
-2. **Add to Claude Desktop config** (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
+2. **⚙️ Add to Claude Desktop config** (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
    ```json
    {
      "mcpServers": {
@@ -182,7 +179,7 @@ See the `examples/` directory for working examples:
    }
    ```
 
-3. **For remote Ray clusters** (like Kubernetes), add port-forwarding and environment:
+3. **🌐 For remote Ray clusters** (like Kubernetes), add port-forwarding and environment:
    ```bash
    kubectl port-forward -n ray-cluster ray-cluster-kuberay-head-<pod-id> 10001:10001
    ```
@@ -201,17 +198,17 @@ See the `examples/` directory for working examples:
    }
    ```
 
-4. **Restart Claude Desktop** and test with: "What Ray tools are available?"
+4. **🔄 Restart Claude Desktop** and test with: *"What Ray tools are available?"* 🎉
 
-### Detailed Setup Guides
+### 📖 Detailed Setup Guides
 
-- **Kubernetes Ray Clusters**: See [docs/KUBERNETES_SETUP.md](docs/KUBERNETES_SETUP.md)
-- **Configuration Examples**: See [docs/config/](docs/config/)
-- **Development Guide**: See [CLAUDE.md](CLAUDE.md)
+- 🚢 **Kubernetes Ray Clusters**: See [docs/KUBERNETES_SETUP.md](docs/KUBERNETES_SETUP.md)
+- ⚙️ **Configuration Examples**: See [docs/config/](docs/config/)
+- 👨‍💻 **Development Guide**: See [CLAUDE.md](CLAUDE.md)
 
-## Development
+## 🛠️ Development
 
-### Running Tests
+### 🧪 Running Tests
 
 ```bash
 # Run all tests
@@ -223,7 +220,7 @@ uv run pytest tests/test_multi_node_cluster.py
 uv run pytest tests/test_e2e_integration.py
 ```
 
-### Code Quality
+### ✨ Code Quality
 
 ```bash
 # Run linting and formatting checks
@@ -240,6 +237,10 @@ uv run black ray_mcp/
 uv run isort ray_mcp/
 ```
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+**Ready to supercharge your Ray workflows? Get started now!** 🚀✨ 
